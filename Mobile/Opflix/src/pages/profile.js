@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
-import {Text, AsyncStorage, View} from 'react-native';
+import {Text, AsyncStorage, View, Image} from 'react-native';
 
 class Profile extends Component {
+
+  static navigationOptions = {
+    tabBarIcon: () => (
+      <Image 
+        source={require("../assets/img/ProfileIcon.png")}
+        // style={{ width: 25, height: 25, tintColor: '#FF5A01'}}
+        style={style.tabNavigationProfileIco}
+
+      />  
+    )
+  }
+
   constructor() {
     super();
     this.state = {

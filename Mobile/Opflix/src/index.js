@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import MainScreen from './pages/main'
 import ProfileScreen from './pages/profile'
 import SignInScreen from './pages/signin'
+import FilterScreen from './pages/filter'
 
 const AuthStack = createStackNavigator({ Sign: { screen: SignInScreen } })
 
@@ -15,6 +16,9 @@ const MainNavigator = createBottomTabNavigator(
     },
     Profile: {
         screen: ProfileScreen
+    },
+    Filter: {
+        screen: FilterScreen
     }
 })
 

@@ -61,7 +61,7 @@ class SignIn extends Component {
           value={this.state.senha}
         />
         <TouchableOpacity onPress={this._realizarLogin}>
-          <Text>Go!</Text>
+          <Text style={{color: 'red'}}>Go!</Text>
         </TouchableOpacity>
       </View>
     );
