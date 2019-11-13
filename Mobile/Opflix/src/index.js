@@ -11,16 +11,31 @@ const AuthStack = createStackNavigator({ Sign: { screen: SignInScreen } })
 
 const MainNavigator = createBottomTabNavigator(
     {
-    Main: {
-        screen: MainScreen
+      Main: {
+        screen: MainScreen,
+      },
+      Profile: {
+        screen: ProfileScreen,
+      },
+      Filter: {
+          screen: FilterScreen,
+      }
     },
-    Profile: {
-        screen: ProfileScreen
+    {
+      initialRouteName: 'Main',
+      swipeEnabled: false,
+      tabBarOptions: {
+        showIcon: true,
+        showLabel: false,
+        inactiveBackgroundColor: '#FF5A01',
+        activeBackgroundColor: '#01A6FF',
+        style: {
+          width: '100%',
+          height: 50,
+        },
+      },
     },
-    Filter: {
-        screen: FilterScreen
-    }
-})
+  );
 
 export default createAppContainer(
     createSwitchNavigator(

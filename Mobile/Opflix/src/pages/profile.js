@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, AsyncStorage, View, Image} from 'react-native';
+import {Text, AsyncStorage, View, Image, StyleSheet} from 'react-native';
 
 class Profile extends Component {
 
@@ -8,7 +8,7 @@ class Profile extends Component {
       <Image 
         source={require("../assets/img/ProfileIcon.png")}
         // style={{ width: 25, height: 25, tintColor: '#FF5A01'}}
-        style={style.tabNavigationProfileIco}
+        style={style.tabNavigationProfileIcon}
 
       />  
     )
@@ -42,5 +42,14 @@ class Profile extends Component {
     );
   }
 }
+
+const style = StyleSheet.create({
+  tabNavigationProfileIcon: {
+    width: 25,
+    height: 25,
+    // tintColor: '#FF5A01'
+    tintColor: '#FFFFFF'
+  }
+})
 
 export default Profile;

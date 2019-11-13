@@ -8,7 +8,8 @@ class Filter extends Component {
     tabBarIcon: () => (
       <Image 
         source={require("../assets/img/FilterIcon.png")}
-        style={{ width: 25, height: 25, tintColor: '#FF5A01'}}
+        // style={{ width: 25, height: 25, tintColor: '#FF5A01'}}
+        style={style.tabNavigationFilterIcon}
       />  
     )
   }
@@ -26,5 +27,14 @@ class Filter extends Component {
     );
   }
 }
+
+const style = StyleSheet.create({
+  tabNavigationFilterIcon: {
+    width: 25,
+    height: 25,
+    // tintColor: '#FF5A01'
+    tintColor: '#FFFFFF'
+  }
+})
 
 export default Filter;
