@@ -20,9 +20,9 @@ const MainNavigator = createBottomTabNavigator(
       Filter: {
           screen: FilterScreen,
       }
-    },
-    {
-      initialRouteName: 'Main',
+      },
+      {
+        initialRouteName: 'Main',
       swipeEnabled: false,
       tabBarOptions: {
         showIcon: true,

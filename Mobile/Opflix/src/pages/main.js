@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
-    backgroundColor: "#27FF01"
+    backgroundColor: "#FFFFFF"
   },
   mainHeaderRow: {
     flexDirection: "row"
