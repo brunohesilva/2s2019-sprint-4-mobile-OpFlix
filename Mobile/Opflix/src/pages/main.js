@@ -22,10 +22,10 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this._carregarlancamentos();
+    this.carregarLancamentos();
   }
 
-  _carregarlancamentos = async () => {
+  carregarLancamentos = async () => {
     await fetch('http://192.168.4.209:5000/api/lancamentos')
       .then(resposta => resposta.json())
       .then(data => this.setState({lancamentos: data}))
@@ -49,129 +49,150 @@ class Main extends Component {
         <FlatList
            data={this.state.lancamentos}
            keyExtractor={item => item.idLancamento}
-           renderItem={({item}) => (
-             <View>
-               <Text style={{color: 'red'}}>{item.idLancamento}</Text>
-               <Text style={{color: 'red'}}>{item.titulo}</Text>
-               <Text style={{color: 'red'}}>{item.sinopse}</Text>
-               <Text style={{color: 'red'}}>{item.tempoDuracao}</Text>
-               <Text style={{color: 'red'}}>{item.filmeSerie}</Text>
-               <Text style={{color: 'red'}}>{item.dataLancamento}</Text>
-               <Text style={{color: 'red'}}>{item.idCategoriaNavigation === undefined ? 'null' : item.idCategoriaNavigation.categoria}</Text>
-             </View>
-           )}
-
+          //  renderItem={({item}) => (
+          //    <View>
+          //      <Text style={{color: 'red'}}>{item.idLancamento}</Text>
+          //      <Text style={{color: 'red'}}>{item.titulo}</Text>
+          //      <Text style={{color: 'red'}}>{item.sinopse}</Text>
+          //      <Text style={{color: 'red'}}>{item.tempoDuracao}</Text>
+          //      <Text style={{color: 'red'}}>{item.filmeSerie}</Text>
+          //      <Text style={{color: 'red'}}>{item.dataLancamento}</Text>
+          //      <Text style={{color: 'red'}}>{item.idCategoriaNavigation === undefined ? 'null' : item.idCategoriaNavigation.categoria}</Text>
+          //    </View>
+          //  )}
+          contentContainerStyle={styles.mainBodyConteudo}
+          renderItem={this.renderizaItem}
          />
         </View>
       </View>           
     );
   }
-}
-const styles = StyleSheet.create({
-  tabNavigationMovieIcon: {
-    width: 25,
-    height: 25,
-    // tintColor: '#FF5A01'
-    tintColor: '#FFFFFF'
-  },
-  main: {
-    flex: 1,
-    backgroundColor: "#FFFFFF"
-  },
-  mainHeaderRow: {
-    flexDirection: "row"
-  },
-  mainHeader: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  mainHeaderImg: {
-    width: 22,
-    height: 22,
-    tintColor: "#FF5A01",
-    marginRight: -9,
-    marginTop: -9
-  },
-  mainHeaderText: {
-    fontSize: 16,
-    letterSpacing: 5,
-    color: "#FFFFFF",
-    fontFamily: "Franklin Gothic"
-  },
-  mainHeaderLine: {
-    width: 170,
-    paddingTop: 10,
-    borderBottomColor: "#999999",
-    borderBottomWidth: 0.9
-  },
-  mainBody: {
-    flex: 4
-  },
-  mainBodyConteudo: {
-    paddingTop: 30,
-    paddingRight: 50,
-    paddingLeft: 50
-  },
-  flatItemLinha: {
-    flexDirection: "row",
-    borderBottomWidth: 0.9,
-    borderBottomColor: "gray"
-  },
-  flatItemContainer: {
-    flex: 7,
-    marginTop: 5
-  },
-  flatItemIdTitulo: {
-    fontSize: 14,
-    color: "#333",
-    fontFamily: "Franklin Gothic"
-  },
-  flatItemTitulo: {
-    fontSize: 14,
-    color: "#333",
-    fontFamily: "Franklin Gothic"
-  },
-  flatItemSinopse: {
-    fontSize: 14,
-    color: "#333",
-    fontFamily: "Franklin Gothic"
-  },
-  flatItemTempoDuracao: {
-    fontSize: 14,
-    color: "#333",
-    fontFamily: "Franklin Gothic"
-  },
-  flatItemFilmeOuSerie: {
-    fontSize: 14,
-    color: "#333",
-    fontFamily: "Franklin Gothic"
-  },
-  flatItemDataLancamento: {
-    fontSize: 14,
-    color: "#333",
-    fontFamily: "Franklin Gothic"
-  },
-  flatItemCategoria: {
-    fontSize: 14,
-    color: "#333",
-    fontFamily: "Franklin Gothic"
-  },
-  flatItemData: {
-    fontSize: 10,
-    color: "#999",
-    lineHeight: 24
-  },
-  flatItemImg: {
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center"
-  },
-  flatItemImgIcon: {
-    width: 22,
-    height: 22,
-    tintColor: "#FF5A01"
-  }
-})
 
-export default Main;
+  renderizaItem = ({ item }) => (
+    <View style={styles.flatItemLinha}>
+      <View style={styles.flatItemContainer}>
+      <Text style={styles.flatItemIdTitulo}>{item.idLancamento}</Text>
+      <Text style={styles.flatItemTitulo}>{item.titulo}</Text>
+      <Text style={styles.flatItemSinopse}>{item.sinopse}</Text>
+      <Text style={styles.flatItemTempoDuracao}>{item.tempoDuracao}</Text>
+      <Text style={styles.flatItemFilmeOuSerie}>{item.filmeSerie}</Text>
+      <Text style={styles.flatItemDataLancamento}>{item.dataLancamento}</Text>
+      <Text style={styles.flatItemCategoria}>{item.idCategoriaNavigation === undefined ? 'null' : item.idCategoriaNavigation.categoria}</Text>
+      </View>
+      {/* <View style={styles.flatItemImg} >
+          <Image 
+            source={require("../assets/img/View.png")}
+            style={styles.flatImgIcon}
+          />
+      </View> */}
+    </View>
+  )
+}
+  
+  
+  const styles = StyleSheet.create({
+    tabNavigationMovieIcon: {
+      width: 25,
+      height: 25,
+      // tintColor: '#FF5A01'
+      tintColor: '#FFFFFF'
+    },
+    main: {
+      flex: 1,
+      backgroundColor: "#000000"
+    },
+    mainHeaderRow: {
+      flexDirection: "row"
+    },
+    mainHeader: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center"
+    },
+    mainHeaderImg: {
+      width: 22,
+      height: 22,
+      tintColor: "#FF5A01",
+      marginRight: -1,
+      marginTop: -3
+    },
+    mainHeaderText: {
+      fontSize: 15,
+      letterSpacing: 5,
+      color: "#FF5A01",
+      fontFamily: "Franklin Gothic",
+      fontWeight: 'bold',
+    },
+    mainHeaderLine: {
+      width: 170,
+      paddingTop: 10,
+      borderBottomColor: "#999999",
+      borderBottomWidth: 0.9
+    },
+    mainBody: {
+      flex: 4
+    },
+    mainBodyConteudo: {
+      paddingTop: 30,
+      paddingRight: 50,
+      paddingLeft: 50
+    },
+    flatItemLinha: {
+      flexDirection: "row",
+      borderBottomWidth: 0.9,
+      borderBottomColor: "gray"
+    },
+    flatItemContainer: {
+      flex: 7,
+      marginTop: 5
+    },
+    flatItemIdTitulo: {
+      fontSize: 14,
+      color: "#FF5A01",
+      fontFamily: "Franklin Gothic",
+      fontWeight: 'bold'
+    },
+    flatItemTitulo: {
+      fontSize: 14,
+      color: "#FF5A01",
+      fontFamily: "Franklin Gothic",
+      fontWeight: 'bold'
+    },
+    flatItemSinopse: {
+      fontSize: 14,
+      color: "#FF5A01",
+      fontFamily: "Franklin Gothic",
+      fontWeight: 'bold'
+    },
+    flatItemTempoDuracao: {
+      fontSize: 14,
+      color: "#FF5A01",
+      fontFamily: "Franklin Gothic",
+      fontWeight: 'bold'
+    },
+    flatItemFilmeOuSerie: {
+      fontSize: 14,
+      color: "#FF5A01",
+      fontFamily: "Franklin Gothic",
+      fontWeight: 'bold'
+    },
+    flatItemDataLancamento: {
+      fontSize: 14,
+      color: "#FF5A01",
+      fontFamily: "Franklin Gothic",
+      fontWeight: 'bold'
+    },
+    flatItemCategoria: {
+      fontSize: 14,
+      color: "#FF5A01",
+      fontFamily: "Franklin Gothic",
+      fontWeight: 'bold'
+    },
+    flatItemData: {
+      fontSize: 10,
+      color: "#FF5A01",
+      lineHeight: 24
+    }
+  })
+  
+  export default Main;

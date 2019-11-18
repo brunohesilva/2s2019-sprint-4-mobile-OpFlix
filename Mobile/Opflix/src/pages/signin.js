@@ -17,7 +17,7 @@ class SignIn extends Component {
     super();
     this.state = {
       email: 'erik@email.com',
-      senha: null,
+      senha: "123456  ",
     };
   }
 
