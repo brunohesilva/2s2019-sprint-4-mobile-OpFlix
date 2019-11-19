@@ -1,6 +1,7 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack'
+import { createStackNavigator } from 'react-navigation-stack';
+import { ActivityIndicator, StyleSheet, Text, View, } from 'react-native'
 
 import MainScreen from './pages/main'
 import ProfileScreen from './pages/profile'
@@ -23,10 +24,10 @@ const MainNavigator = createBottomTabNavigator(
       },
       {
         initialRouteName: 'Main',
-      swipeEnabled: false,
-      tabBarOptions: {
-        showIcon: true,
-        showLabel: false,
+        swipeEnabled: false,
+        tabBarOptions: {
+          showIcon: true,
+          showLabel: false,
         inactiveBackgroundColor: '#FF5A01',
         activeBackgroundColor: '#ff8849',
         style: {
@@ -34,8 +35,31 @@ const MainNavigator = createBottomTabNavigator(
           height: 50,
         },
       },
+      render() {
+        return (
+          <View style={[styles.container, styles.horizontal]}>
+            <ActivityIndicator size="large" color="#0000ff" />
+            <ActivityIndicator size="small" color="#00ff00" />
+            <ActivityIndicator size="large" color="#0000ff" />
+            <ActivityIndicator size="small" color="#00ff00" />
+          </View>
+        )
+      }
     },
-  );
+    
+    );
+    
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: 'center'
+      },
+      horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10
+      }
+    })
 
 export default createAppContainer(
     createSwitchNavigator(
@@ -48,3 +72,4 @@ export default createAppContainer(
         }
     )
 )
+

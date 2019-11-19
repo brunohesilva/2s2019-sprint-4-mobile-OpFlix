@@ -6,6 +6,9 @@ import {
   TextInput,
   TouchableOpacity,
   AsyncStorage,
+  StyleSheet,
+  Image,
+  ImageBackground
 } from 'react-native';
 
 class SignIn extends Component {
@@ -49,23 +52,94 @@ class SignIn extends Component {
 
   render() {
     return (
-      <View>
-        <TextInput
-          placeholder="email"
-          onChangeText={email => this.setState({email})}
-          value={this.state.email}
-        />
-        <TextInput
-          placeholder="senha"
-          onChangeText={senha => this.setState({senha})}
-          value={this.state.senha}
-        />
-        <TouchableOpacity onPress={this._realizarLogin}>
-          <Text style={{color: 'red'}}>Go!</Text>
-        </TouchableOpacity>
-      </View>
-    );
+      <ImageBackground
+          source={require("../assets/img/WPLogin.jpeg")}
+          style={StyleSheet.absoluteFillObject}
+        >
+          <View style={styles.overlay} />
+          <View style={styles.main} >
+              <Image
+                  source={require("../assets/img/LogoIcon2x.png")}
+                  style={styles.mainImgLogin}
+              />
+              <TextInput
+                style={styles.inputLogin}
+                placeholder="email"
+                onChangeText={email => this.setState({email})}
+                value={this.state.email}
+                placeholderTextColor="#FFFFFF"
+                underlineColorAndroid="#FFFFFF"
+              />
+              <TextInput
+                style={styles.inputLogin}
+                placeholder="senha"
+                onChangeText={senha => this.setState({senha})}
+                value={this.state.senha}
+                password="true"
+                placeholderTextColor="#FFFFFF"
+                underlineColorAndroid="#FFFFFF"
+              />
+              <TouchableOpacity
+                  style={styles.btnLogin} 
+                  onPress={this._realizarLogin}
+              >
+                  <Text style={styles.btnLoginText}>Go!</Text>
+              </TouchableOpacity>
+            </View>            
+        </ImageBackground>
+    ) 
   }
 }
+
+const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(255, 90, 1, 1)"
+  },
+  main: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center"
+  },
+  mainImgLogin: {
+    height: 100,
+    width: 90,
+    margin: 10,
+    marginBottom: 50
+
+  },
+  btnLogin: {
+    height: 38,
+    shadowColor: "rgba(0,0,0, 0.4)",
+    shadowOffset: {height: 1, width: 1},
+    shadowOpacity: 1,
+    shadowRadius: 1,
+    elevation: 3,
+    width: 240,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: "#000000",
+    backgroundColor: "#000000",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  btnLoginText: {
+    fontSize: 12,
+    fontFamily: "Franklin Gothic",
+    color: "#FF5A01",
+    letterSpacing: 4,
+    fontWeight: 'bold',
+    
+  },
+  inputLogin: {
+    width: 240,
+    marginBottom: 10,
+    fontSize: 12,
+    fontWeight: 'bold'
+  }
+})
 
 export default SignIn;
