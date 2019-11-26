@@ -76,7 +76,7 @@ class Filter extends Component {
           })}
         </Picker>
         <TouchableOpacity onPress={this._carregarLancamentos}>
-          <Text style={styles.textButtom}>Buscar</Text>
+          <Text style={styles.textButtom}>Go!</Text>
         </TouchableOpacity>
         <FlatList
           data={this.state.lancamentos}

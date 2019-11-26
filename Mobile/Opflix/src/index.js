@@ -7,6 +7,7 @@ import MainScreen from './pages/main'
 import ProfileScreen from './pages/profile'
 import SignInScreen from './pages/signin'
 import FilterScreen from './pages/filter'
+import FilterDateScreen from './pages/filterdate'
 
 const AuthStack = createStackNavigator({ Sign: { screen: SignInScreen } })
 
@@ -20,6 +21,9 @@ const MainNavigator = createBottomTabNavigator(
       },
       Filter: {
           screen: FilterScreen,
+      },
+      FilterDate: {
+          screen: FilterDateScreen,
       }
       },
       {
