@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Text, AsyncStorage, View, Image, StyleSheet} from 'react-native';
+import { TouchableHighlight, Text, AsyncStorage, View, Image, StyleSheet} from 'react-native';
+import logout from '../assets/img/ExitIcon.png';
 
 class Profile extends Component {
 
@@ -25,6 +26,10 @@ class Profile extends Component {
     this._buscarDadosDoStorage();
   }
 
+  _logout = async () => {
+    this.props.navigation.navigate('AuthStack');
+  }
+
   _buscarDadosDoStorage = async () => {
     try {
       const tokenDoStorage = await AsyncStorage.getItem('@opflix:token');
@@ -38,6 +43,10 @@ class Profile extends Component {
     return (
       <View style={styles.main}>
         <View style={styles.mainHeader}>
+        <TouchableHighlight onPress={() => this._logout()}>
+                <Image source={logout}
+                style={styles.exitButtom}/>
+              </TouchableHighlight>
         <View style={styles.mainHeaderRow}>
           <Image
                 source={require("../assets/img/UserIcon.png")}
@@ -95,8 +104,13 @@ const styles = StyleSheet.create({
   },
   mainBody: {
     flex: 4,
-
-  }
+  },
+  exitButtom: {
+    width: 35,
+    height: 35,
+    tintColor: '#FF5A01',
+    marginLeft: 370,
+}
 })
 
 export default Profile;

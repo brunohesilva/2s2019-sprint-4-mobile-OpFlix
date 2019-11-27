@@ -107,7 +107,7 @@ class FilterDate extends Component {
                 />
                 <TouchableOpacity
                   onPress={this._filtroData}>
-                  <Text style={styles.textButtom}>Go!</Text>
+                  {/* <Text style={styles.textButtom}>Go!</Text> */}
                 </TouchableOpacity>
               </ScrollView>
             </View>
@@ -135,15 +135,16 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         tintColor: '#FF5A01',
-        marginLeft: 375
+        marginLeft: 370,
+        marginTop: 10
     },
     main: {
         flex: 1,
         backgroundColor: "#000000"
       },
-      mainHeaderRow: {
-        flexDirection: "row"
-      },
+      // mainHeaderRow: {
+      //   flexDirection: "row"
+      // },
       mainHeader: {
         flex: 1,
         justifyContent: "center",
@@ -153,19 +154,23 @@ const styles = StyleSheet.create({
         width: 22,
         height: 22,
         tintColor: "#FF5A01",
-        marginRight: 5,
-        marginTop: -3
+        marginLeft: 110,
+        marginTop: 45,
+        position: "absolute"
       },
       mainHeaderText: {
         fontSize: 15,
         letterSpacing: 5,
         color: "#FF5A01",
         fontFamily: "Franklin Gothic",
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        position: "absolute",
+        marginTop: 45,
+        marginLeft: 135
       },
       mainHeaderLine: {
         width: 170,
-        paddingTop: 10,
+        paddingTop: 30,
         borderBottomColor: "#999999",
         borderBottomWidth: 0.9
       },
@@ -209,7 +214,7 @@ const styles = StyleSheet.create({
       textTitulo: {
         color: "#FF5A01",
         marginLeft: 60,
-        marginTop: -10,
+        marginTop: 100,
         fontWeight: 'bold',
       },
       textContent: {

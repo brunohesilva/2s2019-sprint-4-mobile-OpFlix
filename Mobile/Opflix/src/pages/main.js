@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Text, View, Image, StyleSheet } from 'react-native';
+import {Text, View, Image, StyleSheet, TouchableHighlight } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+import logout from '../assets/img/ExitIcon.png';
 
 class Main extends Component {
 
@@ -25,6 +26,10 @@ class Main extends Component {
     this.carregarLancamentos();
   }
 
+  _logout = async () => {
+    this.props.navigation.navigate('AuthStack');
+  }
+
   carregarLancamentos = async () => {
     await fetch('http://192.168.4.209:5000/api/lancamentos')
       .then(resposta => resposta.json())
@@ -36,7 +41,11 @@ class Main extends Component {
     return (
       <View style={styles.main}>
         <View style={styles.mainHeader}>
-        <View style={styles.mainHeaderRow}>          
+        <TouchableHighlight onPress={() => this._logout()}>
+                <Image source={logout}
+                style={styles.exitButtom}/>
+              </TouchableHighlight>
+          <View style={styles.mainHeaderRow}>          
           <Image 
                 source={require("../assets/img/ListIcon.png")}
                 style={styles.mainHeaderImg}
@@ -192,7 +201,13 @@ class Main extends Component {
       fontSize: 10,
       color: "#FF5A01",
       lineHeight: 24
-    }
+    },
+    exitButtom: {
+      width: 35,
+      height: 35,
+      tintColor: '#FF5A01',
+      marginLeft: 370,
+  }
   })
   
   export default Main;

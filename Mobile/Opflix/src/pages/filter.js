@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, AsyncStorage, Picker, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Text, View, AsyncStorage, Picker, TouchableOpacity, Image, StyleSheet, TouchableHighlight } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import logout from '../assets/img/ExitIcon.png';
 
 class Filter extends Component {
   constructor(props) {
@@ -26,6 +27,10 @@ class Filter extends Component {
   componentDidMount() {
     // this._carregarLancamentos();
     this._carregarCategorias();
+  }
+
+  _logout = async () => {
+    this.props.navigation.navigate('AuthStack');
   }
 
   _carregarLancamentos = async () => {
@@ -57,6 +62,10 @@ class Filter extends Component {
     return (
       <View style={styles.main}>
         <View style={styles.mainHeader}>
+              <TouchableHighlight onPress={() => this._logout()}>
+                <Image source={logout}
+                style={styles.exitButtom}/>
+              </TouchableHighlight>
         <View style={styles.mainHeaderRow}>
         <Image 
                 source={require("../assets/img/LupaIcon.png")}
@@ -76,7 +85,7 @@ class Filter extends Component {
           })}
         </Picker>
         <TouchableOpacity onPress={this._carregarLancamentos}>
-          <Text style={styles.textButtom}>Go!</Text>
+          {/* <Text style={styles.textButtom}>Go!</Text> */}
         </TouchableOpacity>
         <FlatList
           data={this.state.lancamentos}
@@ -122,7 +131,8 @@ const styles =StyleSheet.create({
   mainHeader: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+
   },
   mainHeaderImg: {
     width: 22,
@@ -184,7 +194,7 @@ const styles =StyleSheet.create({
   textTitulo: {
     color: "#FF5A01",
     marginLeft: 100,
-    marginTop: -10,
+    marginTop: 10,
     fontWeight: 'bold',
   },
   textContent: {
@@ -198,7 +208,13 @@ const styles =StyleSheet.create({
     marginLeft: 180,
     marginTop: 25,
     fontWeight: 'bold'
-  }
+  },
+  exitButtom: {
+    width: 35,
+    height: 35,
+    tintColor: '#FF5A01',
+    marginLeft: 370,
+}
 })
 
 export default Filter;
