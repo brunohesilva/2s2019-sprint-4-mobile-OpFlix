@@ -16,14 +16,14 @@ const MainNavigator = createBottomTabNavigator(
       Main: {
         screen: MainScreen,
       },
-      Profile: {
-        screen: ProfileScreen,
-      },
       Filter: {
-          screen: FilterScreen,
+        screen: FilterScreen,
       },
       FilterDate: {
-          screen: FilterDateScreen,
+        screen: FilterDateScreen,
+      },
+      Profile: {
+        screen: ProfileScreen,
       }
       },
       {
